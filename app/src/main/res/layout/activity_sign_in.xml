@@ -32,7 +32,7 @@
         android:text="Enter email or username"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="70dp"
         android:textSize="15sp"
         />
 
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/EmailTxt"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="70dp"
         android:hint="Enter email or username"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -59,7 +59,7 @@
         android:text="Enter password"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="70dp"
         android:textSize="15sp"
         />
 
@@ -68,7 +68,7 @@
         android:layout_width="245dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/PassTxt"
-        android:layout_marginLeft="90dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/edittext"
         android:hint="Enter password"
