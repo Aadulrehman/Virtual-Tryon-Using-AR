@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash"
+        android:layout_marginTop="90dp"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/LogoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:text="MAAN VIRTUAL TRY ON"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"
+        />
+
+    <Button
+        android:id="@+id/GoogleBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LogoTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_button"
+        android:drawableLeft="@drawable/google"
+        android:text="sign up with google"
+        android:paddingLeft="25dp"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:drawablePadding="4dip"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+    <Button
+        android:id="@+id/FbBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoogleBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_corner_button_darkblue"
+        android:drawableLeft="@drawable/google"
+        android:text="sign up with facebook"
+        android:paddingLeft="25dp"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:drawablePadding="4dip"
+        android:textSize="12sp" />
+    <ImageView
+        android:id="@+id/seperator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/seperator"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/FbBtn"
+        />
+    <TextView
+        android:id="@+id/EmailTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seperator"
+        android:text="Whats your email?"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="90dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/EmailInput"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EmailTxt"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="90dp"
+        android:hint="Enter email"
+        android:textColor="@color/black"
+        android:paddingLeft="5dp"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        android:background="@drawable/edittext"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/PassTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EmailInput"
+        android:text="Create a password"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="90dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/PassInput"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PassTxt"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edittext"
+        android:hint="Enter password"
+        android:inputType="textPassword"
+        android:paddingLeft="5dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/NameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PassInput"
+        android:text="Create a username"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="90dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/NameInput"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NameTxt"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edittext"
+        android:hint="Enter username"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:paddingLeft="5dp"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/DobTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/NameInput"
+        android:text="Enter date of birth"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="90dp"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/DobInput"
+        android:layout_width="245dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DobTxt"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/edittext"
+        android:hint="Enter dob"
+        android:inputType="date"
+        android:textColor="@color/black"
+        android:paddingLeft="5dp"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
+    <Button
+        android:id="@+id/SignUpBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/DobInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_corner_button_blue"
+        android:text="sign up"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+
+
+</RelativeLayout>

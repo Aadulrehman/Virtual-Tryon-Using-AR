@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePage">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splash"
+        android:layout_marginTop="130dp"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/LogoTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:text="MAAN VIRTUAL TRY ON"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"
+        />
+
+    <Button
+        android:id="@+id/SigninBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LogoTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corner_button"
+        android:text="sign in"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+    <Button
+        android:id="@+id/SignUpBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SigninBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner_button_blue"
+        android:text="sign up"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/GoogleBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SignUpBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_corner_button"
+        android:drawableLeft="@drawable/google"
+        android:text="continue with google"
+        android:paddingLeft="25dp"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:drawablePadding="4dip"
+        android:textStyle="bold"
+        android:textSize="12sp" />
+    <Button
+        android:id="@+id/FbBtn"
+        android:layout_width="218dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GoogleBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:background="@drawable/rounded_corner_button_darkblue"
+        android:drawableLeft="@drawable/google"
+        android:text="continue with facebook"
+        android:paddingLeft="17dp"
+        android:textAlignment="textStart"
+        android:textAllCaps="true"
+        android:drawablePadding="4dip"
+        android:textSize="12sp" />
+
+
+
+</RelativeLayout>
