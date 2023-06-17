@@ -26,9 +26,11 @@
             android:exported="false" />
         <activity
             android:name="com.fyp.app.HomePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.fyp.app.SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.fyp.app.SignUp"
