@@ -88,6 +88,41 @@ class GlassesActivity : AppCompatActivity() {
                 modelRenderable.isShadowCaster = false
                 modelRenderable.isShadowReceiver = false
             }
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse("F3.sfb"))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
+
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse("F4.sfb"))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
+
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse("F5.sfb"))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
+
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse("F6.sfb"))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
 
         val sceneView = arFragment.arSceneView
         sceneView.cameraStreamRenderPriority = Renderable.RENDER_PRIORITY_FIRST

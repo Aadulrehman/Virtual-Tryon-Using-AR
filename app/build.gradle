@@ -65,3 +65,23 @@ sceneform.asset('sampledata/test.fbx',
         'default',
         'sampledata/test.sfa',
         'src/main/assets/test')
+
+sceneform.asset('sampledata/F3.fbx',
+        'default',
+        'sampledata/F3.sfa',
+        'src/main/assets/F3')
+
+sceneform.asset('sampledata/F4.fbx',
+        'default',
+        'sampledata/F4.sfa',
+        'src/main/assets/F4')
+
+sceneform.asset('sampledata/F5.fbx',
+        'default',
+        'sampledata/F5.sfa',
+        'src/main/assets/F5')
+
+sceneform.asset('sampledata/F6.fbx',
+        'default',
+        'sampledata/F6.sfa',
+        'src/main/assets/F6')
