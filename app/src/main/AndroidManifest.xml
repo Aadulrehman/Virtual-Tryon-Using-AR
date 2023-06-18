@@ -23,6 +23,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="com.fyp.app.SignInActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name="com.fyp.app.HomePage"
@@ -34,6 +35,7 @@
             android:exported="false" />
         <activity
             android:name="com.fyp.app.SignUp"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
 
         <meta-data
