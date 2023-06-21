@@ -2,10 +2,13 @@ package com.fyp.app
 
 import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.ar.core.ArCoreApk
 import com.google.ar.core.AugmentedFace
 import com.google.ar.core.TrackingState
@@ -38,6 +41,31 @@ class GlassesActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_glasses)
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.BottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.camera
+
+        bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.camera -> return@setOnItemSelectedListener true
+                R.id.home -> {
+                    startActivity(Intent(applicationContext, InventoryActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.fav-> {
+                    startActivity(Intent(applicationContext, FavouriteActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    finish()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
+
+        //Glasses Implementation
+
         button_next.setOnClickListener {
             changeModel = !changeModel
             index++
