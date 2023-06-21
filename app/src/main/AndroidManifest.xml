@@ -22,28 +22,36 @@
         android:usesCleartextTraffic="false"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.fyp.app.SignInActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
+            android:name=".FavouriteActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.fyp.app.HomePage"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
+            android:name=".InventoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.fyp.app.SplashScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
+            android:name=".SignInActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.fyp.app.SignUp"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="false" />
+            android:name=".HomePage"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
 
         <activity
-            android:name="com.fyp.app.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
             android:screenOrientation="locked"
@@ -55,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fyp.app.GlassesActivity"
+            android:name=".GlassesActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="locked"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

@@ -39,7 +39,7 @@ class SignInActivity : AppCompatActivity() {
                                 "User is logged in",
                                 Toast.LENGTH_SHORT
                             ).show();
-                            startActivity(Intent(this, GlassesActivity::class.java))
+                            startActivity(Intent(this, InventoryActivity::class.java))
                         } else {
                             Toast.makeText(
                                 applicationContext,
