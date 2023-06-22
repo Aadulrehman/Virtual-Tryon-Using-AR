@@ -38,6 +38,15 @@
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/baseline_camera_alt_24"
+            android:layout_marginStart="190dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/title"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

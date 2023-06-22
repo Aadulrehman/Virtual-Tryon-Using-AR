@@ -3,6 +3,7 @@ package com.fyp.app
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +22,7 @@ class InventoryActivity : AppCompatActivity() {
 
 
         imageList = arrayOf(
-            R.drawable.splash,
+            R.drawable.g1,
             R.drawable.splash,
             R.drawable.splash,
             R.drawable.splash,
@@ -39,6 +40,7 @@ class InventoryActivity : AppCompatActivity() {
             "Glasses 6",
             "Glasses 7",
             "Glasses 8")
+
 
         recyclerView = findViewById(R.id.recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(this)
