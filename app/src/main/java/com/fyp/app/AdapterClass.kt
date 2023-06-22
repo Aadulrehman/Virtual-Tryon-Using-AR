@@ -30,6 +30,56 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
                 intent.putExtra("fname", fname)
                 context.startActivity(intent)
             }
+            if(currentItem.dataTitle.toString()=="Oval Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "test.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+            if(currentItem.dataTitle.toString()=="Tatum Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "yellow_sunglasses.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+            if(currentItem.dataTitle.toString()=="Silver Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "F6.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+            if(currentItem.dataTitle.toString()=="Golden Round Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "glasses.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+            if(currentItem.dataTitle.toString()=="Hughes Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "F4.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+            if(currentItem.dataTitle.toString()=="Geometric Frame"){
+                val context = holder.itemView.context
+                val intent = Intent(context, TryOnGlassesActivity::class.java)
+                val fname = "sunglasses.sfb"
+
+                intent.putExtra("fname", fname)
+                context.startActivity(intent)
+            }
+
+
         }
 
         holder.itemView.setOnClickListener{
@@ -43,6 +93,5 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
         val rvImage: ImageView = itemView.findViewById(R.id.image)
         val rvTitle: TextView = itemView.findViewById(R.id.title)
         val button: Button = itemView.findViewById(R.id.mycam)
-
     }
 }

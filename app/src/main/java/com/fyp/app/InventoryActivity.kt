@@ -23,22 +23,22 @@ class InventoryActivity : AppCompatActivity() {
 
         imageList = arrayOf(
             R.drawable.g1,
-            R.drawable.splash,
-            R.drawable.splash,
-            R.drawable.splash,
-            R.drawable.splash,
-            R.drawable.splash,
-            R.drawable.splash,
+            R.drawable.g2,
+            R.drawable.g3,
+            R.drawable.g4,
+            R.drawable.g5,
+            R.drawable.g6,
+            R.drawable.g7,
             R.drawable.splash)
 
         titleList = arrayOf(
             "Black Round Frame",
-            "Glasses 2",
-            "Glasses 3",
-            "Glasses 4",
-            "Glasses 5",
-            "Glasses 6",
-            "Glasses 7",
+            "Tatum Frame",
+            "Oval Frame",
+            "Silver Frame",
+            "Golden Round Frame",
+            "Hughes Frame",
+            "Geometric Frame",
             "Glasses 8")
 
 
