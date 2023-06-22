@@ -4,10 +4,10 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.ar.core.ArCoreApk
 import com.google.ar.core.AugmentedFace
@@ -16,11 +16,10 @@ import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.Texture
 import com.google.ar.sceneform.ux.AugmentedFaceNode
-import kotlinx.android.synthetic.main.activity_glasses.*
+
 import java.util.ArrayList
 
-class GlassesActivity : AppCompatActivity() {
-
+class TryOnGlassesActivity : AppCompatActivity() {
     companion object {
         const val MIN_OPENGL_VERSION = 3.0
     }
@@ -31,16 +30,17 @@ class GlassesActivity : AppCompatActivity() {
     private var faceRegionsRenderable: ModelRenderable? = null
 
     var faceNodeMap = HashMap<AugmentedFace, AugmentedFaceNode>()
-    private var index: Int = 0
     private var changeModel: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_try_on_glasses)
+
+        val fname = intent.getStringExtra("fname")
+
         if (!checkIsSupportedDeviceOrFinish()) {
             return
         }
-
-        setContentView(R.layout.activity_glasses)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.BottomNavigation)
         bottomNavigationView.selectedItemId = R.id.camera
@@ -66,15 +66,6 @@ class GlassesActivity : AppCompatActivity() {
 
         //Glasses Implementation
 
-        button_next.setOnClickListener {
-            changeModel = !changeModel
-            index++
-            if (index > glasses.size - 1) {
-                index = 0
-            }
-            faceRegionsRenderable = glasses.get(index)
-        }
-
         arFragment =supportFragmentManager.findFragmentById(R.id.face_fragment)!! as FaceArFragment
         Texture.builder()
             .setSource(this, R.drawable.makeup)
@@ -82,16 +73,7 @@ class GlassesActivity : AppCompatActivity() {
             .thenAccept { texture -> faceMeshTexture = texture }
 
         ModelRenderable.builder()
-            .setSource(this, Uri.parse("yellow_sunglasses.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                faceRegionsRenderable = modelRenderable
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("glasses.sfb"))
+            .setSource(this, Uri.parse(fname))
             .build()
             .thenAccept { modelRenderable ->
                 glasses.add(modelRenderable)
@@ -100,48 +82,6 @@ class GlassesActivity : AppCompatActivity() {
                 modelRenderable.isShadowReceiver = false
             }
 
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("sunglasses.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("test.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("F3.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
-
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("F4.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
-
-        ModelRenderable.builder()
-            .setSource(this, Uri.parse("F6.sfb"))
-            .build()
-            .thenAccept { modelRenderable ->
-                glasses.add(modelRenderable)
-                modelRenderable.isShadowCaster = false
-                modelRenderable.isShadowReceiver = false
-            }
 
         val sceneView = arFragment.arSceneView
         sceneView.cameraStreamRenderPriority = Renderable.RENDER_PRIORITY_FIRST
@@ -189,7 +129,7 @@ class GlassesActivity : AppCompatActivity() {
             ?.glEsVersion
 
         openGlVersionString?.let { s ->
-            if (java.lang.Double.parseDouble(openGlVersionString) < MIN_OPENGL_VERSION) {
+            if (java.lang.Double.parseDouble(openGlVersionString) < GlassesActivity.MIN_OPENGL_VERSION) {
                 Toast.makeText(this, "Sceneform requires OpenGL ES 3.0 or later", Toast.LENGTH_LONG)
                     .show()
                 finish()

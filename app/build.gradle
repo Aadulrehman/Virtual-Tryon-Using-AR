@@ -77,10 +77,6 @@ sceneform.asset('sampledata/F4.fbx',
         'sampledata/F4.sfa',
         'src/main/assets/F4')
 
-sceneform.asset('sampledata/F5.fbx',
-        'default',
-        'sampledata/F5.sfa',
-        'src/main/assets/F5')
 
 sceneform.asset('sampledata/F6.fbx',
         'default',

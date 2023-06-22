@@ -32,7 +32,7 @@ class InventoryActivity : AppCompatActivity() {
             R.drawable.splash)
 
         titleList = arrayOf(
-            "Glasses 1",
+            "Black Round Frame",
             "Glasses 2",
             "Glasses 3",
             "Glasses 4",
