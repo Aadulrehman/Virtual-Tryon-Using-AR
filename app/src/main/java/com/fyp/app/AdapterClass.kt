@@ -13,6 +13,22 @@ import androidx.recyclerview.widget.RecyclerView
 class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Adapter<AdapterClass.ViewHolderClass>() {
 
     var onItemClick: ((DataClass) -> Unit)? = null
+
+    private var button1ClickListener: ButtonClickListener? = null
+    private var button2ClickListener: ButtonClickListener? = null
+
+    interface ButtonClickListener {
+        fun onButton1Click(position: Int)
+        fun onButton2Click(position: Int)
+    }
+    fun setButton1ClickListener(listener: ButtonClickListener) {
+        button1ClickListener = listener
+    }
+    fun setButton2ClickListener(listener: ButtonClickListener) {
+        button2ClickListener = listener
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return ViewHolderClass(itemView)
@@ -22,64 +38,10 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
         holder.rvImage.setImageResource(currentItem.dataImage)
         holder.rvTitle.text = currentItem.dataTitle
         holder.button.setOnClickListener {
-            if(currentItem.dataTitle.toString()=="Black Round Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "F3.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Oval Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "test.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Tatum Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "yellow_sunglasses.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Silver Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "F6.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Golden Round Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "glasses.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Hughes Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "F4.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-            if(currentItem.dataTitle.toString()=="Geometric Frame"){
-                val context = holder.itemView.context
-                val intent = Intent(context, TryOnGlassesActivity::class.java)
-                val fname = "sunglasses.sfb"
-
-                intent.putExtra("fname", fname)
-                context.startActivity(intent)
-            }
-
-
+            button1ClickListener?.onButton1Click(position)
+        }
+        holder.fbutton.setOnClickListener {
+            button2ClickListener?.onButton2Click(position)
         }
 
         holder.itemView.setOnClickListener{
@@ -93,5 +55,6 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
         val rvImage: ImageView = itemView.findViewById(R.id.image)
         val rvTitle: TextView = itemView.findViewById(R.id.title)
         val button: Button = itemView.findViewById(R.id.mycam)
+        val fbutton:Button= itemView.findViewById(R.id.favbtn)
     }
 }
