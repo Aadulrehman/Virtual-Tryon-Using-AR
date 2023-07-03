@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
@@ -16,10 +17,14 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
 
     private var button1ClickListener: ButtonClickListener? = null
     private var button2ClickListener: ButtonClickListener? = null
+    private var checkboxClickListener: CheckboxClickListener?=null
 
     interface ButtonClickListener {
         fun onButton1Click(position: Int)
         fun onButton2Click(position: Int)
+    }
+    interface CheckboxClickListener {
+        fun onCheckboxClicked(position: Int, isChecked: Boolean)
     }
     fun setButton1ClickListener(listener: ButtonClickListener) {
         button1ClickListener = listener
@@ -27,6 +32,10 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
     fun setButton2ClickListener(listener: ButtonClickListener) {
         button2ClickListener = listener
     }
+    fun setCheckboxClickListener(listener: CheckboxClickListener){
+        checkboxClickListener=listener
+    }
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
@@ -43,6 +52,13 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
         holder.fbutton.setOnClickListener {
             button2ClickListener?.onButton2Click(position)
         }
+        holder.ckbox.setOnClickListener{
+            checkboxClickListener?.onCheckboxClicked(position,false)
+        }
+        if(currentItem.dataTitle=="Tatum Frame"){
+            //holder.ckbox.isChecked=true
+            holder.fbutton.setBackgroundResource(R.drawable.baseline_favorite_24)
+        }
 
         holder.itemView.setOnClickListener{
             onItemClick?.invoke(currentItem)
@@ -56,5 +72,6 @@ class AdapterClass(private val dataList: ArrayList<DataClass>): RecyclerView.Ada
         val rvTitle: TextView = itemView.findViewById(R.id.title)
         val button: Button = itemView.findViewById(R.id.mycam)
         val fbutton:Button= itemView.findViewById(R.id.favbtn)
+        val ckbox = itemView.findViewById<CheckBox>(R.id.checkboxx)
     }
 }

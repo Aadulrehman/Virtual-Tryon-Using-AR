@@ -48,11 +48,20 @@
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:id="@+id/checkboxx"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:id="@+id/favbtn"
-            android:background="@drawable/baseline_favorite_24"
+            android:background="@drawable/baseline_favorite_border_24"
             android:layout_marginStart="180dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"

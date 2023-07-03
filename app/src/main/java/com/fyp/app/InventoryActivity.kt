@@ -2,24 +2,40 @@ package com.fyp.app
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import android.content.Context
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 
+var globalArray: Array<String> = arrayOf("Tatum Frame")
 class InventoryActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dataList: ArrayList<DataClass>
     private lateinit var adapter: AdapterClass
     lateinit var imageList:Array<Int>
     lateinit var titleList:Array<String>
+    private lateinit var dbRef: DatabaseReference
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
+
+        val email=intent.getStringExtra("email")
+        //var favarr= mutableListOf<Fav>()
 
 
         imageList = arrayOf(
@@ -53,6 +69,32 @@ class InventoryActivity : AppCompatActivity() {
 
         adapter = AdapterClass(dataList)
         recyclerView.adapter = adapter
+
+        val favoriteList= mutableListOf<Fav>()
+
+        dbRef=FirebaseDatabase.getInstance().getReference("Favourites")
+
+        dbRef.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                favoriteList.clear()
+                if(snapshot.exists()){
+                    for (i in snapshot.children){
+                        val fetchemail=i.child("email")
+                        if(email==fetchemail.toString()){
+                            val con=i.getValue(Fav::class.java)
+                            favoriteList.add(con!!)
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext,"Firebase failed to retrieve information", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
 
@@ -104,6 +146,40 @@ class InventoryActivity : AppCompatActivity() {
             }
 
             override fun onButton2Click(position: Int) {
+                if(position==0){
+
+                    //Add in FireBase
+                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
+                    val id=dbRef.push().key!!
+                    val current_favourite=Fav("Black Round Frame",email) //fetch from data class/list
+                    val status=dbRef.child(id!!).setValue(current_favourite)
+
+                    status.addOnSuccessListener {
+                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
+                    }.addOnFailureListener{
+                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                if(position==1){
+                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
+                    val id=dbRef.push().key!!
+                    val current_favourite=Fav("Tatum Frame",email) //fetch from data class/list
+                    val status=dbRef.child(id!!).setValue(current_favourite)
+
+                    status.addOnSuccessListener {
+                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
+                    }.addOnFailureListener{
+                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+        adapter.setCheckboxClickListener(object : AdapterClass.CheckboxClickListener{
+            override fun onCheckboxClicked(position: Int, isChecked: Boolean) {
+                if(position==0){
+
+
+                }
                 startActivity(Intent(applicationContext, FavouriteActivity::class.java))
             }
         })
@@ -130,8 +206,6 @@ class InventoryActivity : AppCompatActivity() {
             }
             false
         }
-
-
 
     }
     private fun getData(){
