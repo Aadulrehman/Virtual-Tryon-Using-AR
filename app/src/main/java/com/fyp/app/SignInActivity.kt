@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.fyp.app.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var mFirebaseAuth : FirebaseAuth
@@ -39,7 +40,9 @@ class SignInActivity : AppCompatActivity() {
                                 "User is logged in",
                                 Toast.LENGTH_SHORT
                             ).show();
-                            startActivity(Intent(this, InventoryActivity::class.java))
+                            val intent =Intent(this@SignInActivity,InventoryActivity::class.java)
+                            intent.putExtra("email",EmailInput.text.toString())
+                            startActivity(intent)
                         } else {
                             Toast.makeText(
                                 applicationContext,

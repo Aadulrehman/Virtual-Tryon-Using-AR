@@ -8,17 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-<<<<<<< Updated upstream
-=======
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_sign_in.*
->>>>>>> Stashed changes
+
 
 
 class InventoryActivity : AppCompatActivity() {
@@ -27,10 +26,13 @@ class InventoryActivity : AppCompatActivity() {
     private lateinit var adapter: AdapterClass
     lateinit var imageList:Array<Int>
     lateinit var titleList:Array<String>
+    private lateinit var dbRef: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
+        val email=intent.getStringExtra("email").toString().trim()
 
 
         imageList = arrayOf(
@@ -65,8 +67,8 @@ class InventoryActivity : AppCompatActivity() {
         adapter = AdapterClass(dataList)
         recyclerView.adapter = adapter
 
-<<<<<<< Updated upstream
-=======
+
+
         val favoriteList= mutableListOf<Fav>()
 
         dbRef=FirebaseDatabase.getInstance().getReference("Favourites")
@@ -91,9 +93,6 @@ class InventoryActivity : AppCompatActivity() {
             }
 
         })
-
->>>>>>> Stashed changes
-
 
         adapter.setButton1ClickListener(object : AdapterClass.ButtonClickListener {
             override fun onButton1Click(position: Int) {
@@ -143,8 +142,6 @@ class InventoryActivity : AppCompatActivity() {
             }
 
             override fun onButton2Click(position: Int) {
-<<<<<<< Updated upstream
-=======
                 if(position==0){
 
                     for(i in favoriteList){
@@ -176,16 +173,6 @@ class InventoryActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
                     }
                 }
-            }
-        })
-        adapter.setCheckboxClickListener(object : AdapterClass.CheckboxClickListener{
-            override fun onCheckboxClicked(position: Int, isChecked: Boolean) {
-                if(position==0){
-
-
-                }
->>>>>>> Stashed changes
-                startActivity(Intent(applicationContext, FavouriteActivity::class.java))
             }
         })
 
@@ -223,10 +210,6 @@ class InventoryActivity : AppCompatActivity() {
             dataList.add(dataClass)
         }
         recyclerView.adapter = AdapterClass(dataList)
-    }
-    private fun inventoryRecyclerView(favoriteList: MutableList<Fav>) {
-
-
     }
 
 }
