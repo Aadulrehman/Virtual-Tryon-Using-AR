@@ -79,9 +79,10 @@ class InventoryActivity : AppCompatActivity() {
                 favoriteList.clear()
                 if(snapshot.exists()){
                     for (i in snapshot.children){
-                        val fetchemail=i.child("email")
+                        val fetchemail=i.child("email").value.toString().trim()
+                       //val fetchtitle=i.child("title").value.toString().trim()
 
-                        if(email==fetchemail.toString()){
+                        if(email==fetchemail){
                             val con=i.getValue(Fav::class.java)
                             favoriteList.add(con!!)
                         }
@@ -142,37 +143,32 @@ class InventoryActivity : AppCompatActivity() {
             }
 
             override fun onButton2Click(position: Int) {
+                var check:Boolean=false
                 if(position==0){
-
-                    for(i in favoriteList){
-                        val x=i.title.toString()
-                        Log.d("koko",x)
-                    }
-
-                    //Add in FireBase
-                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
-                    val id=dbRef.push().key!!
-                    val current_favourite=Fav("Black Round Frame",email) //fetch from data class/list
-                    val status=dbRef.child(id!!).setValue(current_favourite)
-
-                    status.addOnSuccessListener {
-                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
-                    }.addOnFailureListener{
-                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
-                    }
+                    PositionFavAction(email,"Black Round Frame", favoriteList)
                 }
                 if(position==1){
-                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
-                    val id=dbRef.push().key!!
-                    val current_favourite=Fav("Tatum Frame",email) //fetch from data class/list
-                    val status=dbRef.child(id!!).setValue(current_favourite)
-
-                    status.addOnSuccessListener {
-                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
-                    }.addOnFailureListener{
-                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
-                    }
+                    PositionFavAction(email,"Tatum Frame", favoriteList)
                 }
+                if(position==2){
+                    PositionFavAction(email,"Oval Frame", favoriteList)
+                }
+                if(position==3){
+                    PositionFavAction(email,"Silver Frame", favoriteList)
+                }
+                if(position==4){
+                    PositionFavAction(email,"Golden Round Frame", favoriteList)
+                }
+                if(position==5){
+                    PositionFavAction(email,"Hughes Frame", favoriteList)
+                }
+                if(position==6){
+                    PositionFavAction(email,"Geometric Frame", favoriteList)
+                }
+                if(position==7){
+                    PositionFavAction(email,"Glasses 8", favoriteList)
+                }
+
             }
         })
 
@@ -210,6 +206,57 @@ class InventoryActivity : AppCompatActivity() {
             dataList.add(dataClass)
         }
         recyclerView.adapter = AdapterClass(dataList)
+    }
+    private fun addData(email:String,title: String){
+        val id=dbRef.push().key!!
+        val current_favourite=Fav(title,email) //fetch from data class/list
+        val status=dbRef.child(id!!).setValue(current_favourite)
+
+        status.addOnSuccessListener {
+            Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
+        }.addOnFailureListener{
+            Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun deleteData(email:String, title:String){
+        dbRef.addListenerForSingleValueEvent(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if(snapshot.exists()){
+                    for (i in snapshot.children){
+                        val fetchemail=i.child("email").value.toString().trim()
+                        val fetchtitle=i.child("title").value.toString().trim()
+
+                        if(email==fetchemail && fetchtitle==title){
+                            i.ref.removeValue()
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext,"Firebase failed to delete information", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+
+    }
+    private fun PositionFavAction(email:String, title: String, favoriteList:MutableList<Fav>){
+        var check:Boolean=false
+        for(i in favoriteList){
+            val x=i.title.toString()
+            if(x==title){//Delete
+                check=true
+            }
+        }
+        if(check==false){
+            //Add in FireBase
+            addData(email,title)
+        }
+        else{
+            deleteData(email,title)
+            check=false
+        }
     }
 
 }
