@@ -8,6 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+<<<<<<< Updated upstream
+=======
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import android.content.Context
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_sign_in.*
+>>>>>>> Stashed changes
 
 
 class InventoryActivity : AppCompatActivity() {
@@ -54,6 +65,34 @@ class InventoryActivity : AppCompatActivity() {
         adapter = AdapterClass(dataList)
         recyclerView.adapter = adapter
 
+<<<<<<< Updated upstream
+=======
+        val favoriteList= mutableListOf<Fav>()
+
+        dbRef=FirebaseDatabase.getInstance().getReference("Favourites")
+        dbRef.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                favoriteList.clear()
+                if(snapshot.exists()){
+                    for (i in snapshot.children){
+                        val fetchemail=i.child("email")
+
+                        if(email==fetchemail.toString()){
+                            val con=i.getValue(Fav::class.java)
+                            favoriteList.add(con!!)
+                        }
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(applicationContext,"Firebase failed to retrieve information", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+
+>>>>>>> Stashed changes
 
 
         adapter.setButton1ClickListener(object : AdapterClass.ButtonClickListener {
@@ -104,6 +143,48 @@ class InventoryActivity : AppCompatActivity() {
             }
 
             override fun onButton2Click(position: Int) {
+<<<<<<< Updated upstream
+=======
+                if(position==0){
+
+                    for(i in favoriteList){
+                        val x=i.title.toString()
+                        Log.d("koko",x)
+                    }
+
+                    //Add in FireBase
+                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
+                    val id=dbRef.push().key!!
+                    val current_favourite=Fav("Black Round Frame",email) //fetch from data class/list
+                    val status=dbRef.child(id!!).setValue(current_favourite)
+
+                    status.addOnSuccessListener {
+                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
+                    }.addOnFailureListener{
+                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                if(position==1){
+                    dbRef= FirebaseDatabase.getInstance().getReference("Favourites")
+                    val id=dbRef.push().key!!
+                    val current_favourite=Fav("Tatum Frame",email) //fetch from data class/list
+                    val status=dbRef.child(id!!).setValue(current_favourite)
+
+                    status.addOnSuccessListener {
+                        Toast.makeText(applicationContext, "Record Added", Toast.LENGTH_SHORT).show();
+                    }.addOnFailureListener{
+                        Toast.makeText(applicationContext,"Record Not saved in database", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+        adapter.setCheckboxClickListener(object : AdapterClass.CheckboxClickListener{
+            override fun onCheckboxClicked(position: Int, isChecked: Boolean) {
+                if(position==0){
+
+
+                }
+>>>>>>> Stashed changes
                 startActivity(Intent(applicationContext, FavouriteActivity::class.java))
             }
         })
@@ -122,7 +203,9 @@ class InventoryActivity : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
                 R.id.fav-> {
-                    startActivity(Intent(applicationContext, FavouriteActivity::class.java))
+                    val intent =Intent(this@InventoryActivity,FavouriteActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true
@@ -141,4 +224,9 @@ class InventoryActivity : AppCompatActivity() {
         }
         recyclerView.adapter = AdapterClass(dataList)
     }
+    private fun inventoryRecyclerView(favoriteList: MutableList<Fav>) {
+
+
+    }
+
 }
