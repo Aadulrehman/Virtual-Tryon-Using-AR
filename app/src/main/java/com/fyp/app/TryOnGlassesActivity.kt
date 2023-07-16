@@ -16,6 +16,7 @@ import com.google.ar.sceneform.rendering.ModelRenderable
 import com.google.ar.sceneform.rendering.Renderable
 import com.google.ar.sceneform.rendering.Texture
 import com.google.ar.sceneform.ux.AugmentedFaceNode
+import kotlinx.android.synthetic.main.activity_glasses.*
 
 import java.util.ArrayList
 
@@ -31,12 +32,16 @@ class TryOnGlassesActivity : AppCompatActivity() {
 
     var faceNodeMap = HashMap<AugmentedFace, AugmentedFaceNode>()
     private var changeModel: Boolean = false
+    private var index: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_try_on_glasses)
 
         val fname = intent.getStringExtra("fname")
+        val sname = intent.getStringExtra("sname")
+        val tname = intent.getStringExtra("tname")
+        val email=intent.getStringExtra("email").toString().trim()
 
         if (!checkIsSupportedDeviceOrFinish()) {
             return
@@ -49,13 +54,17 @@ class TryOnGlassesActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.camera -> return@setOnItemSelectedListener true
                 R.id.home -> {
-                    startActivity(Intent(applicationContext, InventoryActivity::class.java))
+                    val intent =Intent(this@TryOnGlassesActivity,InventoryActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true
                 }
                 R.id.fav-> {
-                    startActivity(Intent(applicationContext, FavouriteActivity::class.java))
+                    val intent =Intent(this@TryOnGlassesActivity,FavouriteActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true
@@ -65,6 +74,15 @@ class TryOnGlassesActivity : AppCompatActivity() {
         }
 
         //Glasses Implementation
+
+        button_next.setOnClickListener {
+            changeModel = !changeModel
+            index++
+            if (index > glasses.size - 1) {
+                index = 0
+            }
+            faceRegionsRenderable = glasses.get(index)
+        }
 
         arFragment =supportFragmentManager.findFragmentById(R.id.face_fragment)!! as FaceArFragment
         Texture.builder()
@@ -81,7 +99,24 @@ class TryOnGlassesActivity : AppCompatActivity() {
                 modelRenderable.isShadowCaster = false
                 modelRenderable.isShadowReceiver = false
             }
-
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse(sname))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                faceRegionsRenderable = modelRenderable
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
+        ModelRenderable.builder()
+            .setSource(this, Uri.parse(tname))
+            .build()
+            .thenAccept { modelRenderable ->
+                glasses.add(modelRenderable)
+                faceRegionsRenderable = modelRenderable
+                modelRenderable.isShadowCaster = false
+                modelRenderable.isShadowReceiver = false
+            }
 
         val sceneView = arFragment.arSceneView
         sceneView.cameraStreamRenderPriority = Renderable.RENDER_PRIORITY_FIRST

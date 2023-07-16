@@ -41,6 +41,7 @@ class GlassesActivity : AppCompatActivity() {
         }
 
         setContentView(R.layout.activity_glasses)
+        val email=intent.getStringExtra("email").toString().trim()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.BottomNavigation)
         bottomNavigationView.selectedItemId = R.id.camera
@@ -49,13 +50,17 @@ class GlassesActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.camera -> return@setOnItemSelectedListener true
                 R.id.home -> {
-                    startActivity(Intent(applicationContext, InventoryActivity::class.java))
+                    val intent =Intent(this@GlassesActivity,InventoryActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true
                 }
                 R.id.fav-> {
-                    startActivity(Intent(applicationContext, FavouriteActivity::class.java))
+                    val intent =Intent(this@GlassesActivity,FavouriteActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true

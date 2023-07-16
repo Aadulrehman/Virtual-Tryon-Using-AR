@@ -83,3 +83,73 @@ sceneform.asset('sampledata/F6.fbx',
         'default',
         'sampledata/F6.sfa',
         'src/main/assets/F6')
+
+sceneform.asset('sampledata/blackf4.fbx',
+        'default',
+        'sampledata/blackf4.sfa',
+        'src/main/assets/blackf4')
+
+sceneform.asset('sampledata/BlueF4.fbx',
+        'default',
+        'sampledata/BlueF4.sfa',
+        'src/main/assets/BlueF4')
+
+sceneform.asset('sampledata/F3v1.fbx',
+        'default',
+        'sampledata/F3v1.sfa',
+        'src/main/assets/F3v1')
+
+sceneform.asset('sampledata/F3v2.fbx',
+        'default',
+        'sampledata/F3v2.sfa',
+        'src/main/assets/F3v2')
+
+sceneform.asset('sampledata/F6v2.fbx',
+        'default',
+        'sampledata/F6v2.sfa',
+        'src/main/assets/F6v2')
+
+sceneform.asset('sampledata/F6v3.fbx',
+        'default',
+        'sampledata/F6v3.sfa',
+        'src/main/assets/F6v3')
+
+sceneform.asset('sampledata/glassespink.fbx',
+        'default',
+        'sampledata/glassespink.sfa',
+        'src/main/assets/glassespink')
+
+sceneform.asset('sampledata/glassessilver.fbx',
+        'default',
+        'sampledata/glassessilver.sfa',
+        'src/main/assets/glassessilver')
+
+sceneform.asset('sampledata/sunglasseslightgreen.fbx',
+        'default',
+        'sampledata/sunglasseslightgreen.sfa',
+        'src/main/assets/sunglasseslightgreen')
+
+sceneform.asset('sampledata/sunglasseslightyellow.fbx',
+        'default',
+        'sampledata/sunglasseslightyellow.sfa',
+        'src/main/assets/sunglasseslightyellow')
+
+sceneform.asset('sampledata/testlightblue.fbx',
+        'default',
+        'sampledata/testlightblue.sfa',
+        'src/main/assets/testlightblue')
+
+sceneform.asset('sampledata/testpink.fbx',
+        'default',
+        'sampledata/testpink.sfa',
+        'src/main/assets/testpink')
+
+sceneform.asset('sampledata/yellowglassesred.fbx',
+        'default',
+        'sampledata/yellowglassesred.sfa',
+        'src/main/assets/yellowglassesred')
+
+sceneform.asset('sampledata/yellowglassesskyblue.fbx',
+        'default',
+        'sampledata/yellowglassesskyblue.sfa',
+        'src/main/assets/yellowglassesskyblue')

@@ -35,7 +35,7 @@
         android:text="sign in"
         android:textAllCaps="true"
         android:textStyle="bold"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
     <Button
         android:id="@+id/SignUpBtn"
         android:layout_width="218dp"
@@ -47,7 +47,7 @@
         android:text="sign up"
         android:textAllCaps="true"
         android:textStyle="bold"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
 
     <Button
         android:id="@+id/GoogleBtn"
@@ -64,7 +64,7 @@
         android:textAllCaps="true"
         android:drawablePadding="4dip"
         android:textStyle="bold"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
     <Button
         android:id="@+id/FbBtn"
         android:layout_width="218dp"
@@ -80,7 +80,7 @@
         android:textAlignment="textStart"
         android:textAllCaps="true"
         android:drawablePadding="4dip"
-        android:textSize="12sp" />
+        android:textSize="10sp" />
 
 
 

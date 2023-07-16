@@ -1,0 +1,61 @@
+{
+  animations: [
+    {
+      path: 'sampledata/blackf4.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'oculos',
+      parameters: [
+        {
+          baseColor: [
+            0.037409999999999999,
+            0.026997,
+            0.035213000000000001,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/blackf4.fbx',
+    name: 'blackf4',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}

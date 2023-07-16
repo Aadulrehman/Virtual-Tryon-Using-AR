@@ -1,0 +1,61 @@
+{
+  animations: [
+    {
+      path: 'sampledata/BlueF4.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'oculos',
+      parameters: [
+        {
+          baseColor: [
+            0.056528000000000002,
+            0.17886299999999999,
+            0.17886299999999999,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/BlueF4.fbx',
+    name: 'BlueF4',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}

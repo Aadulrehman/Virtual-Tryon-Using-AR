@@ -34,7 +34,6 @@ class InventoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inventory)
         val email=intent.getStringExtra("email").toString().trim()
 
-
         imageList = arrayOf(
             R.drawable.g1,
             R.drawable.g2,
@@ -63,7 +62,7 @@ class InventoryActivity : AppCompatActivity() {
         dataList = arrayListOf<DataClass>()
         getData()
 
-
+//chnage
         adapter = AdapterClass(dataList)
         recyclerView.adapter = adapter
 
@@ -100,36 +99,57 @@ class InventoryActivity : AppCompatActivity() {
                 if(position==0){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "F3.sfb")
+                    intent.putExtra("sname", "F3v1.sfb")
+                    intent.putExtra("tname", "F3v2.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==1){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "yellow_sunglasses.sfb")
+                    intent.putExtra("sname", "yellowglassesred.sfb")
+                    intent.putExtra("tname", "yellowglassesskyblue.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==2){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "test.sfb")
+                    intent.putExtra("sname", "testlightblue.sfb")
+                    intent.putExtra("tname", "testpink.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==3){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "F6.sfb")
+                    intent.putExtra("sname", "F6v2.sfb")
+                    intent.putExtra("tname", "F6v3.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==4){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "glasses.sfb")
+                    intent.putExtra("sname", "glassespink.sfb")
+                    intent.putExtra("tname", "glassessilver.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==5){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "F4.sfb")
+                    intent.putExtra("sname", "BlueF4.sfb")
+                    intent.putExtra("tname", "blackf4.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
                 if(position==6){
                     val intent = Intent(this@InventoryActivity, TryOnGlassesActivity::class.java)
                     intent.putExtra("fname", "sunglasses.sfb")
+                    intent.putExtra("sname", "sunglasseslightgreen.sfb")
+                    intent.putExtra("tname", "sunglasseslightyellow.sfb")
+                    intent.putExtra("email",email)
                     startActivity(intent)
                 }
             }
@@ -168,7 +188,6 @@ class InventoryActivity : AppCompatActivity() {
                 if(position==7){
                     PositionFavAction(email,"Glasses 8", favoriteList)
                 }
-
             }
         })
 
@@ -180,7 +199,9 @@ class InventoryActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.home -> return@setOnItemSelectedListener true
                 R.id.camera -> {
-                    startActivity(Intent(applicationContext, GlassesActivity::class.java))
+                    val intent =Intent(this@InventoryActivity,GlassesActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
                     finish()
                     return@setOnItemSelectedListener true
@@ -196,8 +217,6 @@ class InventoryActivity : AppCompatActivity() {
             }
             false
         }
-
-
 
     }
     private fun getData(){

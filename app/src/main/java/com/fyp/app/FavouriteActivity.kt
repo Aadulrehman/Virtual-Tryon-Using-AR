@@ -62,9 +62,9 @@ class FavouriteActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.fav -> return@setOnItemSelectedListener true
                 R.id.camera -> {
-                    startActivity(Intent(applicationContext, GlassesActivity::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
+                    val intent =Intent(this@FavouriteActivity,GlassesActivity::class.java)
+                    intent.putExtra("email",email)
+                    startActivity(intent)
                     return@setOnItemSelectedListener true
                 }
                 R.id.home-> {
